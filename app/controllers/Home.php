@@ -1,10 +1,15 @@
 <?php
 
+namespace app\controllers;
+use app\views\Home as HomeView;
+use lang\Localization;
+
 class Home
 {
     public function execute(): void
     {
-        header('Location: /home');
-        (new HomeView())->show();
+        $localization = new Localization('en');
+        $text = $localization->translate('greeting');
+        (new HomeView())->show($text);
     }
 }
