@@ -12,7 +12,8 @@
   "autoload": {
     "psr-4": {
       "app\\": "app/",
-      "lang\\": "lang/"
+      "lang\\": "lang/",
+      "public\\": "public/"
     }
   },
   "require": {

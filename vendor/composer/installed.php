@@ -3,7 +3,7 @@
         'name' => 'vendor_name/portefolio',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '59f7d4d10d4c3bc393fb9a5630cf94d13b62c379',
+        'reference' => 'd2164a396bc0f2698c82959fe59ac48edaeb41d3',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'vendor_name/portefolio' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '59f7d4d10d4c3bc393fb9a5630cf94d13b62c379',
+            'reference' => 'd2164a396bc0f2698c82959fe59ac48edaeb41d3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

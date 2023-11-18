@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\views\Navbar;
+
 class Template
 {
     public function __construct(private string $title,
@@ -15,14 +17,14 @@ class Template
 <head>
     <meta charset="UTF-8">
     <title> <?= $this->title?></title>
-    <link rel="stylesheet" href="/public/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/main.css">
     <?php if ($this->stylesheet !== '') { ?>
-        <link rel="stylesheet" href="/public/assets/styles/<?= $this->stylesheet ?>.css">
+        <link rel="stylesheet" href="/assets/styles/<?= $this->stylesheet ?>.css">
     <?php } ?>
 <!--    <link rel="shortcut icon" type="image/jpg" href="/assets/images/logoblanc.png"/>-->
 </head>
 <body>
-
+<?= (new Navbar())->show()?>
 <?= $this->content?>
 </body>
 </html>
