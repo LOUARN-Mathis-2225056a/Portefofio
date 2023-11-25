@@ -6,156 +6,348 @@
 \*------------------------------------*/
 
 $darkGray = #2e2e2e
+@media only screen and (hover: none) and (pointer: coarse){
+  $itemColors = #67E89B, #5FD992, #58C988, #52BA7D, #459C69
 
-$itemColors = #67E89B, #5FD992, #58C988, #52BA7D, #459C69
-
-$baseSize = 4.8rem
-$itemCount = 4
-
-
-/*------------------------------------*\
-  BASE STYLES
-\*------------------------------------*/
-
-*,
-*::before,
-*::after
-  box-sizing border-box
-  outline none
-
-body
-  position relative
-  display flex
-  justify-content center
-  background-color $darkGray
-  font-family Lato, Arial, sans-serif
-
-h1
-  font-size 3rem
-  font-weight 300
-  margin 5rem 0
-  color white
-
-a
-  text-decoration none
-  color white
-
-input[type=checkbox]
-  position absolute
-  top -9999px
-  left -9999px
+  $baseSize = 4.8rem
+  $itemCount = 4
 
 
-/*------------------------------------*\
-  MENU
-\*------------------------------------*/
+  /*------------------------------------*\
+    BASE STYLES
+  \*------------------------------------*/
+  *,
+  *::before,
+  *::after
+    box-sizing border-box
+    outline none
 
-.menu
-  position absolute
-  left -10px
-  top -10px
-  display flex
-  flex-direction column
-  align-items flex-start
+  body
+    position relative
+    display flex
+    justify-content center
+    background-color $darkGray
+    font-family Lato, Arial, sans-serif
 
+  h1
+    font-size 3rem
+    font-weight 300
+    margin 5rem 0
+    color white
 
-/*------------------------------------*\
-  MENU ITEM
-\*------------------------------------*/
+  a
+    text-decoration none
+    color white
 
-.menu__item
-  position relative
-  display flex
-  justify-content center
-  font-size 1.4rem
-  font-weight 300
-  padding 5.5px
-  transform translateX(calc(-100% -\ 2.8rem))
-  transition background-color 0.2s
-  for index in 1..$itemCount
-    &:nth-child({index + 1})
-      $tmp = $itemCount - index
-      $dec = index - 1
-      $currentColor = $itemColors[$dec]
-      width ($baseSize+($tmp*2.4rem))
-      background-color $currentColor
-
-      &::after
-        position absolute
-        content ""
-        width 0
-        height 0
-        left 100%
-        top 0
-        border 1.2rem solid $currentColor
-        border-right 1.2rem solid transparent
-        border-bottom 1.2rem solid transparent
-        transition border 0.2s
-
-      &:hover
-        background-color darken($currentColor, 20%)
-
-      &:hover::after
-        border 1.2rem solid darken($currentColor, 20%)
-        border-right 1.2rem solid transparent
-        border-bottom 1.2rem solid transparent
-
-
-/*------------------------------------*\
-  MENU CLOSE
-\*------------------------------------*/
-
-.menu__close
-  position relative
-  font-family FontAwesome
-  font-size 1.2rem
-  color white
-  width 2*($baseSize - 2.4rem)
-  height 2*($baseSize - 2.4rem)
-  cursor pointer
-  transform translateX(-100%)
-
-  &::before
+  input[type=checkbox]
     position absolute
-    content ""
-    top 0.9rem
-    left 0.9rem
-    z-index 1
+    top -9999px
+    left -9999px
 
-  &::after
+
+  /*------------------------------------*\
+    MENU
+  \*------------------------------------*/
+  .menu
     position absolute
-    content ""
-    width 0
-    height 0
-    border ($baseSize - 2.4rem) solid $itemColors[-1]
-    border-right ($baseSize - 2.4rem) solid transparent
-    border-bottom ($baseSize - 2.4rem) solid transparent
-    transition border 0.2s
+    left -10px
+    top -10px
+    display flex
+    flex-direction column
+    align-items flex-start
 
-  &:hover::after
-    border ($baseSize - 2.4rem) solid darken($itemColors[-1], 20%)
-    border-right ($baseSize - 2.4rem) solid transparent
-    border-bottom ($baseSize - 2.4rem) solid transparent
 
-input[type=checkbox]:checked ~ .menu__item
-  for index in 1..$itemCount
-    &:nth-child({index + 1})
-      transition transform 0.2s ($itemCount - index)*0.1s, background-color 0.2s
-      transform translateX(calc(-100% -\ 2.4rem)) !important
+  /*------------------------------------*\
+    MENU ITEM
+  \*------------------------------------*/
+  .menu__item
+    position relative
+    display flex
+    justify-content center
+    font-size 1.4rem
+    font-weight 300
+    padding 5.5px
+    transform translateX(calc(-100% -\ 2 .8rem))
+    transition background-color 0.2s
+    for index in 1..$itemCount
+      &:nth-child({index + 1})
+        $tmp = $itemCount - index
+        $dec = index - 1
+        $currentColor = $itemColors[$dec]
+        width ($baseSize+ ($tmp* 2.4rem))
+        background-color $currentColor
 
-input[type=checkbox]:checked ~ .menu__close
-  transition transform 0.2s ($itemCount - 1)*0.1s, background-color 0.2s
-  transform translateY($itemCount*(-2.4rem)) !important
+        &::after
+          position absolute
+          content ""
+          width 0
+          height 0
+          left 100%
+          top 0
+          border 1.2rem solid $currentColor
+          border-right 1.2rem solid transparent
+          border-bottom 1.2rem solid transparent
+          transition border 0.2s
 
-  &::before
-    content ""
+        &:hover
+          background-color darken($currentColor, 20%)
 
-input[type=checkbox]:not(:checked) ~ .menu__item
-  for index in 1..$itemCount
-    &:nth-child({index + 1})
-      transition transform 0.2s (index)*0.1s, background-color 0.2s
-      transform translateX(0) !important
+        &:hover::after
+          border 1.2rem solid darken($currentColor, 20%)
+          border-right 1.2rem solid transparent
+          border-bottom 1.2rem solid transparent
 
-input[type=checkbox]:not(:checked) ~ .menu__close
-  transition transform 0.2s 0.1s, background-color 0.2s
-  transform translateY(0) !important
+
+  /*------------------------------------*\
+    MENU CLOSE
+  \*------------------------------------*/
+  .menu__close
+    position relative
+    font-family FontAwesome
+    font-size 1.2rem
+    color white
+    width 2 * ($baseSize - 2.4rem)
+    height 2 * ($baseSize - 2.4rem)
+    cursor pointer
+    transform translateX(-100%)
+
+    &::before
+      position absolute
+      content ""
+      top 0.9rem
+      left 0.9rem
+      z-index 1
+
+    &::after
+      position absolute
+      content ""
+      width 0
+      height 0
+      border ($baseSize - 2.4rem) solid $itemColors[-1]
+      border-right ($baseSize - 2.4rem) solid transparent
+      border-bottom ($baseSize - 2.4rem) solid transparent
+      transition border 0.2s
+
+    &:hover::after
+      border ($baseSize - 2.4rem) solid darken($itemColors[-1], 20%)
+      border-right ($baseSize - 2.4rem) solid transparent
+      border-bottom ($baseSize - 2.4rem) solid transparent
+
+  input[type=checkbox]:checked ~ .menu__item
+    for index in 1..$itemCount
+      &:nth-child({index + 1})
+        transition transform 0.2s ($itemCount - index) * 0.1s, background-color 0.2s
+        transform translateX(calc(-100% -\ 2 .4rem)) !important
+
+  input[type=checkbox]:checked ~ .menu__close
+    transition transform 0.2s ($itemCount - 1) * 0.1s, background-color 0.2s
+    transform translateY($itemCount* (-2.4rem)) !important
+
+    &::before
+      content ""
+
+  input[type=checkbox]:not(:checked) ~ .menu__item
+    for index in 1..$itemCount
+      &:nth-child({index + 1})
+        transition transform 0.2s (index) * 0.1s, background-color 0.2s
+        transform translateX(0) !important
+
+  input[type=checkbox]:not(:checked) ~ .menu__close
+    transition transform 0.2s 0.1s, background-color 0.2s
+    transform translateY(0) !important
+}
+@media (hover: hover){
+
+  /*
+  =====
+  DEPENDENCES
+  =====
+  */
+
+  .r-link{
+    display: var(--rLinkDisplay, inline-flex) !important;
+  }
+
+  .r-link[href]{
+    color: var(--rLinkColor) !important;
+    text-decoration: var(--rLinkTextDecoration, none) !important;
+  }
+
+  .r-list{
+    padding-left: var(--rListPaddingLeft, 0) !important;
+    margin-top: var(--rListMarginTop, 0) !important;
+    margin-bottom: var(--rListMarginBottom, 0) !important;
+    list-style: var(--rListListStyle, none) !important;
+  }
+
+
+  /*
+  =====
+  CORE STYLES
+  =====
+  */
+
+  .menu{
+    --rLinkColor: var(--menuLinkColor, currentColor);
+  }
+
+  .menu__link{
+    display: var(--menuLinkDisplay, block);
+  }
+
+  /*
+  focus state
+  */
+
+  .menu__link:focus{
+    outline: var(--menuLinkOutlineWidth, 2px) solid var(--menuLinkOutlineColor, currentColor);
+    outline-offset: var(--menuLinkOutlineOffset);
+  }
+
+  /*
+  fading siblings
+  */
+
+  .menu:hover .menu__link:not(:hover){
+    --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
+  }
+
+  /*
+  =====
+  PRESENTATION STYLES
+  =====
+  */
+
+  .menu{
+    background-color: var(--menuBackgroundColor, #f0f0f0);
+    box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
+  }
+
+  .menu__list{
+    display: flex;
+  }
+
+  .menu__link{
+    padding: var(--menuLinkPadding, 1.5rem 2.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /*
+  =====
+  TEXT UNDERLINED
+  =====
+  */
+
+  .text-underlined{
+    position: relative;
+    overflow: hidden;
+
+    will-change: color;
+    transition: color .25s ease-out;
+  }
+
+  .text-underlined::before,
+  .text-underlined::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: var(--textUnderlinedLineColor, currentColor);
+
+    will-change: width;
+    transition: width .1s ease-out;
+
+    position: absolute;
+    bottom: 0;
+  }
+
+  .text-underlined::before{
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .text-underlined::after{
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .text-underlined:hover::before,
+  .text-underlined:hover::after{
+    width: 100%;
+    transition-duration: .2s;
+  }
+
+  /*
+  =====
+  SETTINGS
+  =====
+  */
+
+  .page__custom-settings{
+    --menuBackgroundColor: #2ddf75;
+    --menuLinkColor: #fff;
+    --menuLinkColorUnactive: #241c69;
+    --menuLinkOutlineOffset: -.5rem;
+  }
+
+  /*
+  =====
+  DEMO
+  =====
+  */
+
+  body{
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page{
+    box-sizing: border-box;
+    max-width: 640px;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    margin: auto;
+  }
+
+  .page__menu:nth-child(n+2){
+    margin-top: 3rem;
+  }
+
+
+  .substack{
+    border:1px solid #EEE;
+    background-color: #fff;
+    width: 100%;
+    max-width: 480px;
+    height: 280px;
+    margin: 1rem auto;
+}
+
+.linktr{
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem;
+  text-align: center;
+}
+
+.linktr__goal{
+  background-color: rgb(209, 246, 255);
+  color: rgb(8, 49, 112);
+  box-shadow: rgb(8 49 112 / 24%) 0px 2px 8px 0px;
+  border-radius: 2rem;
+  padding: .75rem 1.5rem;
+}
+
+.r-link{
+  --uirLinkDisplay: var(--rLinkDisplay, inline-flex);
+  --uirLinkTextColor: var(--rLinkTextColor);
+  --uirLinkTextDecoration: var(--rLinkTextDecoration, none);
+
+  display: var(--uirLinkDisplay) !important;
+  color: var(--uirLinkTextColor) !important;
+  text-decoration: var(--uirLinkTextDecoration) !important;
+}
+}

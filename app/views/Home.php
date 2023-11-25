@@ -6,13 +6,27 @@ use app\models\Template;
 
 class Home
 {
-    public function show(String $text): void
+    public function show($text): void
     {
         ob_start();
 ?>
-<h1>Home <?= $text?> </h1>
+<div class="page">
+    <div>
+        <p id="welcome_text">
+            <b><?= $text['welcome']?></b> <?= $text['text_1']?> <br>
+            <br>
+            <?= $text['text_2']?>
+        </p>
+    </div>
+    <div>
+        <p id="welcome_text">
+            <?= $text['text_3']?>
+        </p>
+    </div>
+</div>
+
 <?php
-        (new Template('Homepage', ob_get_clean()))->show();
+        (new Template('Home', ob_get_clean(),'home'))->show();
     }
 }
 ?>

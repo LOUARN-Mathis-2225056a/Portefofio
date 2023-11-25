@@ -1,15 +1,16 @@
 <?php
 
 namespace app\controllers;
-use app\views\Home as HomeView;
+
+use app\views\AboutMe as AboutMeView;
 use lang\Localization;
 
-class Home
+class AboutMe
 {
     public function execute(): void
     {
         $localization = new Localization('en');
-        $text = $localization->translate('home');
-        (new HomeView())->show($text);
+        $text = $localization->translate('about_me');
+        (new AboutMeView())->show($text);
     }
 }

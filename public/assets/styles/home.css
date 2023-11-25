@@ -1,0 +1,12 @@
+#welcome_text{
+    font-size: 22px;
+    max-width: 20rem;
+    border: solid var(--main-color);
+    padding: 1rem;
+    transition-duration: 0.5s;
+}
+#welcome_text:hover{
+    background-color: #1f1f1f;
+    border-radius: 5px;
+    padding: 3rem;
+}

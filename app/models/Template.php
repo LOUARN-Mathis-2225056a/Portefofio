@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\views\Navbar;
+use lang\Localization;
 
 class Template
 {
@@ -11,6 +12,8 @@ class Template
                                 private string $stylesheet = ''){}
     public function show(): void
     {
+        $localization = new Localization('en');
+        $text = $localization->translate('navbar');
 ?>
 
 <html lang="fr">
@@ -24,7 +27,7 @@ class Template
 <!--    <link rel="shortcut icon" type="image/jpg" href="/assets/images/logoblanc.png"/>-->
 </head>
 <body>
-<?= (new Navbar())->show()?>
+<?= (new Navbar())->show($text)?>
 <?= $this->content?>
 </body>
 </html>
