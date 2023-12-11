@@ -8,7 +8,7 @@ class Home
 {
     public function execute(): void
     {
-        $localization = new Localization('en');
+        $localization = new Localization();
         $text = $localization->translate('home');
         (new HomeView())->show($text);
     }

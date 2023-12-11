@@ -21,6 +21,7 @@ class Home
     <div>
         <p id="welcome_text">
             <?= $text['text_3']?>
+            <?= $_ENV['lang']?>
         </p>
     </div>
 </div>
